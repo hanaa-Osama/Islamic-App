@@ -1,3 +1,5 @@
+import 'package:app_islami/sura_details.dart';
+import 'package:app_islami/sura_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'colors.dart';
@@ -138,7 +140,7 @@ class QuranTab extends StatelessWidget {
             color: AppColors.primaryColor,
             thickness: 3,
           ),
-          Text('sura names',
+          Text('إسم السورة',
           textAlign: TextAlign.center,
           style: GoogleFonts.elMessiri(
             fontSize: 30,
@@ -170,12 +172,21 @@ class QuranTab extends StatelessWidget {
                   ],
                 ),
                 itemBuilder: (context, index) {
-                    return Text(suraNames[index],
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.elMessiri(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w400,
-                    ),
+                    return InkWell(
+                      onTap: () {
+                        Navigator.
+                        pushNamed(context,
+                            SuraDetailsScreen.routeName,
+                        arguments: SuraModel(suraNames[index],index)
+                        );
+                      },
+                      child: Text(suraNames[index],
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.elMessiri(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w400,
+                      ),
+                      ),
                     );
                     },
               itemCount: suraNames.length)

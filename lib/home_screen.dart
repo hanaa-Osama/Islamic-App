@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {
    HomeScreen({super.key});
+   static const String routeName = "HomeScreen" ;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           backgroundColor: Colors.transparent,
           appBar: AppBar(
             centerTitle: true,
-            title: Text('Islami',
+            title: Text('إسلامي',
             style: GoogleFonts.elMessiri(
               fontSize: 30,
               fontWeight:FontWeight.w700
