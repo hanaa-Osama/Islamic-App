@@ -2,7 +2,7 @@ import 'package:app_islami/sura_details.dart';
 import 'package:app_islami/sura_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'colors.dart';
+import '../../colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -144,7 +144,7 @@ class QuranTab extends StatelessWidget {
           textAlign: TextAlign.center,
           style: GoogleFonts.elMessiri(
             fontSize: 30,
-            fontWeight: FontWeight.w600
+            fontWeight: FontWeight.w800
           ),),
           Divider(
             color: AppColors.primaryColor,
@@ -162,8 +162,6 @@ class QuranTab extends StatelessWidget {
                       child: Divider(
                       color: AppColors.primaryColor,
                       thickness: 3,
-                        // endIndent: 40,
-                        // indent: 40,
                       ),
                     ),
                     Expanded(child: Icon(Icons.star_border_purple500_rounded,
@@ -182,8 +180,8 @@ class QuranTab extends StatelessWidget {
                       },
                       child: Text(suraNames[index],
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.elMessiri(
-                      fontSize: 25,
+                      style: GoogleFonts.amiri(
+                      fontSize: 30,
                       fontWeight: FontWeight.w400,
                       ),
                       ),

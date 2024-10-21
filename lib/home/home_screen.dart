@@ -1,11 +1,13 @@
-import 'package:app_islami/ahadeth.dart';
 import 'package:app_islami/colors.dart';
-import 'package:app_islami/quran.dart';
-import 'package:app_islami/radio.dart';
-import 'package:app_islami/sebha.dart';
-import 'package:app_islami/setting.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'tabs/ahadeth.dart';
+import 'tabs/quran.dart';
+import 'tabs/radio.dart';
+import 'tabs/sebha.dart';
+import 'tabs/setting.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -45,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
             type: BottomNavigationBarType.fixed,
             showUnselectedLabels: false,
             showSelectedLabels: false,
-            backgroundColor: Colors.brown,
+            backgroundColor: AppColors.primaryColor,
             currentIndex: currentInd,
             // iconSize: 20,
             onTap: (value){
@@ -77,8 +79,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
   List<Widget> tabs =[
     QuranTab(),
-    AhadethTab(),
     SebhaTab(),
+    AhadethTab(),
     RadioTab(),
     SettingTab()
   ];
