@@ -1,5 +1,7 @@
+import 'package:app_islami/my_theme_data.dart';
 import 'package:app_islami/sura_details.dart';
 import 'package:app_islami/sura_model.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../colors.dart';
@@ -140,16 +142,11 @@ class QuranTab extends StatelessWidget {
             color: AppColors.primaryColor,
             thickness: 3,
           ),
-          Text('إسم السورة',
+          Text('suraName',
           textAlign: TextAlign.center,
-          style: GoogleFonts.elMessiri(
-            fontSize: 30,
-            fontWeight: FontWeight.w800
-          ),),
-          Divider(
-            color: AppColors.primaryColor,
-            thickness: 3,
+          style: Theme.of(context).textTheme.bodyMedium
           ),
+          Divider(),
           Expanded(
             child:ListView.separated(
                 separatorBuilder:(context, index) =>
@@ -159,10 +156,7 @@ class QuranTab extends StatelessWidget {
                     color: AppColors.primaryColor,)),
                     Expanded(
                       flex: 3,
-                      child: Divider(
-                      color: AppColors.primaryColor,
-                      thickness: 3,
-                      ),
+                      child: Divider(),
                     ),
                     Expanded(child: Icon(Icons.star_border_purple500_rounded,
                         color: AppColors.primaryColor))
@@ -180,10 +174,7 @@ class QuranTab extends StatelessWidget {
                       },
                       child: Text(suraNames[index],
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.amiri(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                      ),
+                      style: Theme.of(context).textTheme.bodySmall
                       ),
                     );
                     },

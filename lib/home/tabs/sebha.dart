@@ -1,11 +1,28 @@
 import 'package:adhkar/controller/adhkar_factory.dart';
 import 'package:adhkar/models/adhkar.model.dart';
+import 'package:app_islami/colors.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SebhaTab extends StatelessWidget {
-  const SebhaTab({super.key});
+class SebhaTab extends StatefulWidget {
+   SebhaTab({super.key});
+
+  @override
+  State<SebhaTab> createState() => _SebhaTabState();
+}
+class _SebhaTabState extends State<SebhaTab> {
+  int indexxTasbeh =0;
+  List <String> tasbeh=[
+    'سبحان الله',
+    'الحمد لله',
+    'لا اله الا الله',
+    'الله اكبر',
+    'لا حول ولا قوة الا بالله',
+    'استغفر الله العظيم',
+  ];
+  int index =0;
 
   @override
   Widget build(BuildContext context) {
@@ -15,53 +32,99 @@ class SebhaTab extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-                    Image.asset('assets/images/head of seb7a.png',
-                      width: 70,
-                      height: 100,),
-                    Image.asset('assets/images/body of seb7a.png',
-                      width: 250,
-                      height: 250,),
-              Text('عدد التسبيحات',
+              SizedBox(height: 70),
+                    Stack(
+                      alignment: AlignmentDirectional(0, -1.5),
+                      children: [
+
+                        Image.asset('assets/images/head of seb7a.png',
+                          ),
+
+                        Image.asset('assets/images/body of seb7a.png',
+                          scale: 3.5,
+
+                        ),
+                      ],
+                    ),
+              Text('tasbehNum',
                 textAlign: TextAlign.center,
-                style: GoogleFonts.electrolize(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w800
-                ),),
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: AppColors.primaryColor,
+                  fontWeight: FontWeight.w900
+                )
+              ),
               ]
           ),
-          Spacer(),
-          Container(
-            width: 100,
-            height: 100,
-            decoration: BoxDecoration(
-                color: Colors.brown,
-                borderRadius: BorderRadius.all(Radius.circular(35))
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: 35),
+                Container(
+                  width: 80,
+                  height: 80,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: AppColors.primaryColor,
+                      width: 4
+                    ),
+                      // color: AppColors.primaryColor,
+                      borderRadius: BorderRadius.all(Radius.circular(35))
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('$indexxTasbeh',
+                        textAlign: TextAlign.center,
+                        style:Theme.of(context).textTheme.bodyMedium
+                            ?.copyWith(
+                          color: Colors.brown
+                        ),),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 50),
+                GestureDetector(
+                    onTap: (){
+                      indexxTasbeh++;
+                      if (indexxTasbeh==34){
+                        indexxTasbeh=0;
+                        index=(index+1)%tasbeh.length;
+                      }
+                      setState(() {});
+                    },
+                  child: Container(
+                    width: 230,
+                    height: 60,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: Colors.white,
+                            width: 4
+                        ),
+                        color: AppColors.primaryColor,
+                        borderRadius: BorderRadius.all(Radius.circular(35))
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Text('${tasbeh[index]}',
+                            textAlign: TextAlign.center,
+                            style:Theme.of(context).textTheme.bodySmall
+                                ?.copyWith(
+                                color: Colors.white
+                            ),),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
-            child: Text('1',
-              style: TextStyle(
-                  color: Colors.white
-              ),),
           ),
-          Spacer(),
-          Spacer(),
-          Spacer(),
         ],
       ),
     );
 
   }
-  // void _getAllAdhkarId() {
-  //   final get_adhkar = AdhkarFactory.getAllAdhkarId();
-  //   print(get_adhkar);
-  // }
-  //
-  // void _getASingleAdhkar() {
-  //   Adhkar adhkar = AdhkarFactory.getAdhkar(adhkarId: "c1");
-  //   print(adhkar.title);
-  // }
-  //
-  // void _getAllAdhkar() {
-  //   List<Adhkar> adhkars = AdhkarFactory.getAdhkar();
-  //   print(adhkars.length);
-  // }
 }

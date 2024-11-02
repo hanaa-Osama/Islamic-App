@@ -14,53 +14,45 @@ class HadethDetailsScreen extends StatelessWidget {
         .of(context)
         ?.settings
         .arguments as HadethModel;
-    return Scaffold(
-      resizeToAvoidBottomInset: false ,
-      appBar: AppBar(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(70),
-            top: Radius.circular(70),
-          ),
-        ),
-        backgroundColor: AppColors.secColor,
-        title: Text('${model.title}',
-            style: GoogleFonts.elMessiri(
-                fontSize: 30,
-                fontWeight: FontWeight.w800,
-                color: Colors.black)
-        ),
-        toolbarHeight: 65,
-        centerTitle: true,
+    return Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(image: AssetImage('assets/images/mainBG.png'))
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(
-              margin: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Color(0xFFD8B396),
-                border: Border.all(color: Colors.brown,
-                  width: 5
-                )
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Container(
-                  margin: EdgeInsets.all(10),
-                  child: Text('${model.content}',
-                      textAlign: TextAlign.right,
-                      style: GoogleFonts.amiri(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w400
-                      )
+      child: Scaffold(
+        resizeToAvoidBottomInset: false ,
+        appBar: AppBar(
+          title: Text('${model.title}',
+          ),
+
+        ),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(height: 50,),
+              Container(
+                margin: EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.transparent,
+                  border: Border.all(
+                      color: AppColors.secColor,
+                    width: 3
+                  )
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    child: Text('${model.content}',
+                        textAlign: TextAlign.right,
+                        style: Theme.of(context).textTheme.bodySmall
+                    ),
                   ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

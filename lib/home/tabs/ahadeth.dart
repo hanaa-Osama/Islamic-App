@@ -1,6 +1,8 @@
 import 'package:app_islami/colors.dart';
 import 'package:app_islami/hadeth_details.dart';
 import 'package:app_islami/hadeth_model.dart';
+import 'package:app_islami/home/home_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -32,7 +34,7 @@ class _AhadethTabState extends State<AhadethTab> {
           Image.asset('assets/images/hadith_header.png'),
           Divider(thickness: 3,
           color: AppColors.primaryColor),
-          Text('الأحاديث',
+          Text('ahadeth',
             style: GoogleFonts.elMessiri(
                 fontSize: 30,
                 fontWeight: FontWeight.w800
@@ -48,10 +50,7 @@ class _AhadethTabState extends State<AhadethTab> {
                         color: AppColors.primaryColor,)),
                       Expanded(
                         flex: 3,
-                        child: Divider(
-                          color: AppColors.primaryColor,
-                          thickness: 3,
-                        ),
+                        child: Divider(),
                       ),
                       Expanded(child: Icon(Icons.star_border_purple500_rounded,
                           color: AppColors.primaryColor))
@@ -66,10 +65,7 @@ class _AhadethTabState extends State<AhadethTab> {
                 },
                 child: Text(allAhadeth[index].title,
                 textAlign: TextAlign.center,
-                    style: GoogleFonts.amiri(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                    ),),
+                    style: Theme.of(context).textTheme.bodySmall),
               ) ;
             },
               itemCount: allAhadeth.length,

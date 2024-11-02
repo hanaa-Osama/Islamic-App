@@ -1,4 +1,5 @@
 import 'package:app_islami/colors.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,29 +28,14 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         Image.asset('assets/images/mainBG.png'),
         Scaffold(
-          backgroundColor: Colors.transparent,
           appBar: AppBar(
-            centerTitle: true,
-            title: Text('إسلامي',
-            style: GoogleFonts.elMessiri(
-              fontSize: 30,
-              fontWeight:FontWeight.w700
-            )
+            title: Text(
+                'appBarTitle'
             ),
-            backgroundColor: Colors.transparent,
           ),
           bottomNavigationBar: BottomNavigationBar(
-            // backgroundColor: primaryColor,
-
-            // selectedItemColor: Colors.black,
-            fixedColor: Colors.black,
-            unselectedItemColor: Colors.white,
             type: BottomNavigationBarType.fixed,
-            showUnselectedLabels: false,
-            showSelectedLabels: false,
-            backgroundColor: AppColors.primaryColor,
             currentIndex: currentInd,
-            // iconSize: 20,
             onTap: (value){
               currentInd=value;
               setState(() {});

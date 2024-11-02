@@ -1,3 +1,4 @@
+import 'package:app_islami/colors.dart';
 import 'package:app_islami/sura_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,16 +15,17 @@ class SuraDetailsScreen extends StatefulWidget {
 }
 
 class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
-  List<String> verses=[];
   String basmala =quran.basmala;
+  List<String>suraLines=[];
+  int num =0;
 
   @override
   Widget build(BuildContext context) {
     var model = ModalRoute
         .of(context)?.settings
         .arguments as SuraModel;
-    if(verses.isEmpty){
 
+    if(suraLines.isEmpty){
       loadSuraFile(model.index);
     }
     return Container(
@@ -31,48 +33,52 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           image: DecorationImage(image: AssetImage('assets/images/mainBG.png'))
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         appBar: AppBar(
           iconTheme: IconThemeData(
               color: Colors.brown,
               size: 30
           ),
-          backgroundColor: Colors.transparent,
           title: Text('\n'+'سورة' + " " + model.name+'\n',
-              style: GoogleFonts.elMessiri(fontSize: 30,
-                  fontWeight: FontWeight.w800,
-                  color: Colors.brown)
           ),
           centerTitle: true,
-          toolbarHeight: 120,
         ),
-        body:ListView.builder(itemBuilder: (context, index) {
-          return Container(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child:
-              Text(verses[index],
-              textAlign: TextAlign.right,
-              style: GoogleFonts.amiriQuran(
-                fontSize: 25,
-                fontWeight: FontWeight.w600
-              ),),
+        body:Padding(
+          padding: EdgeInsets.all(15.0),
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Colors.transparent,
+                border: Border.all(
+                    color: AppColors.secColor,
+                    width: 3
+                )
             ),
-          );
-        },itemCount: verses.length,
+            child: ListView.builder(itemBuilder: (context, index) {
+              return Container(
+                child: Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child:
+                  Text('${suraLines[index]}(${index+1})',
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodySmall),
+                ),
+              );
+            },itemCount: suraLines.length,
+            ),
+          ),
         )
       ),
     );
   }
 
+
   loadSuraFile(int index)async{
-    String sura = await rootBundle.loadString('assets/files/${index+1}.txt');
-    String suraa='${quran.basmala} \n '+sura ;
+    String content = await rootBundle.loadString('assets/files/${index+1}.txt');
+    String fullContent='${quran.basmala}\n'+content ;
     if (index==8 || index==0){
-      suraa = sura;
+      fullContent = content;
     }
-    List<String>suraLines= suraa.split("\n");
-    verses=suraLines;
+    suraLines= fullContent.split("\n");
     setState(() {});
   }
 }
